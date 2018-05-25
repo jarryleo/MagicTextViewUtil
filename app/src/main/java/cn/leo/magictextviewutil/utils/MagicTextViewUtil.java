@@ -1,15 +1,21 @@
 package cn.leo.magictextviewutil.utils;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,6 +167,17 @@ public class MagicTextViewUtil {
         int end = mStringBuilder.length();
         mSpannableItemList.add(new SpannableItem(
                 clickableSpan, start, end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE));
+        return this;
+    }
+
+    public MagicTextViewUtil append(final @DrawableRes int resourceId) {
+        ImageSpan imageSpan = new ImageSpan(mTextView.getContext(), resourceId);
+        int start = mStringBuilder.length();
+        append("icon");
+        int end = mStringBuilder.length();
+        mSpannableItemList.add(new SpannableItem(
+                imageSpan, start, end,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE));
         return this;
     }

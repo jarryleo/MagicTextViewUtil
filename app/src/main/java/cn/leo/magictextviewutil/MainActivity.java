@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private void showText() {
         MagicTextViewUtil.getInstance(mTextView)
                 .append("这是测试")
+                .append(R.mipmap.ic_launcher)
                 .append("红色", Color.RED)
-                .append("点击这里", Color.CYAN, new MagicTextViewUtil.OnTextClickListener() {
+                .append("点击这里", Color.CYAN, true, new MagicTextViewUtil.OnTextClickListener() {
                     @Override
                     public void onClick(String text) {
                         Toast.makeText(MainActivity.this, "点击成功", Toast.LENGTH_SHORT).show();
