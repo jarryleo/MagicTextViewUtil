@@ -1,9 +1,6 @@
 package cn.leo.magictextviewutil.utils;
 
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -15,7 +12,6 @@ import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.TextView;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
