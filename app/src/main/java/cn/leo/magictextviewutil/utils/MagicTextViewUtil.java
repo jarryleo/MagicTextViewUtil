@@ -1,6 +1,7 @@
 package cn.leo.magictextviewutil.utils;
 
 import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -56,7 +57,7 @@ public class MagicTextViewUtil {
         return this;
     }
 
-    public MagicTextViewUtil append(String text, final int color) {
+    public MagicTextViewUtil append(String text, @ColorInt final int color) {
         ForegroundColorSpan spannable = new ForegroundColorSpan(color);
         int start = mStringBuilder.length();
         append(text);
@@ -103,7 +104,7 @@ public class MagicTextViewUtil {
         return this;
     }
 
-    public MagicTextViewUtil append(String text, final int color, final boolean underline) {
+    public MagicTextViewUtil append(String text, @ColorInt final int color, final boolean underline) {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
@@ -124,7 +125,7 @@ public class MagicTextViewUtil {
         return this;
     }
 
-    public MagicTextViewUtil append(final String text, final int color, final OnTextClickListener clickListener) {
+    public MagicTextViewUtil append(final String text, @ColorInt final int color, final OnTextClickListener clickListener) {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
@@ -145,7 +146,7 @@ public class MagicTextViewUtil {
         return this;
     }
 
-    public MagicTextViewUtil append(final String text, final int color, final boolean underline, final OnTextClickListener clickListener) {
+    public MagicTextViewUtil append(final String text, @ColorInt final int color, final boolean underline, final OnTextClickListener clickListener) {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
