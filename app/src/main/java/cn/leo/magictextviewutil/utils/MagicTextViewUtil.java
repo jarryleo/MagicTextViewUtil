@@ -1,5 +1,6 @@
 package cn.leo.magictextviewutil.utils;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
@@ -92,7 +93,9 @@ public class MagicTextViewUtil {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                if (clickListener != null) clickListener.onClick(text);
+                if (clickListener != null) {
+                    clickListener.onClick(text);
+                }
             }
         };
         int start = mStringBuilder.length();
@@ -112,8 +115,8 @@ public class MagicTextViewUtil {
 
             @Override
             public void updateDrawState(TextPaint ds) {
-                ds.setColor(color); //点击文字颜色
-                ds.setUnderlineText(underline);//false去掉下划线
+                ds.setColor(color);
+                ds.setUnderlineText(underline);
             }
         };
         int start = mStringBuilder.length();
@@ -129,12 +132,14 @@ public class MagicTextViewUtil {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                if (clickListener != null) clickListener.onClick(text);
+                if (clickListener != null) {
+                    clickListener.onClick(text);
+                }
             }
 
             @Override
             public void updateDrawState(TextPaint ds) {
-                ds.setColor(color); //点击文字颜色
+                ds.setColor(color);
             }
         };
         int start = mStringBuilder.length();
@@ -150,13 +155,15 @@ public class MagicTextViewUtil {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                if (clickListener != null) clickListener.onClick(text);
+                if (clickListener != null) {
+                    clickListener.onClick(text);
+                }
             }
 
             @Override
             public void updateDrawState(TextPaint ds) {
-                ds.setColor(color); //点击文字颜色
-                ds.setUnderlineText(underline);//false去掉下划线
+                ds.setColor(color);
+                ds.setUnderlineText(underline);
             }
         };
         int start = mStringBuilder.length();
@@ -179,6 +186,17 @@ public class MagicTextViewUtil {
         return this;
     }
 
+    public MagicTextViewUtil append(final Bitmap bitmap) {
+        ImageSpan imageSpan = new ImageSpan(mTextView.getContext(), bitmap);
+        int start = mStringBuilder.length();
+        append("icon");
+        int end = mStringBuilder.length();
+        mSpannableItemList.add(new SpannableItem(
+                imageSpan, start, end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE));
+        return this;
+    }
+
     public void show() {
         SpannableString spannableString = new SpannableString(mStringBuilder.toString());
         for (SpannableItem spannableItem : mSpannableItemList) {
@@ -188,7 +206,7 @@ public class MagicTextViewUtil {
                     spannableItem.end,
                     spannableItem.flag);
         }
-        mTextView.setHighlightColor(Color.TRANSPARENT);//设置选中文字高亮颜色
+        mTextView.setHighlightColor(Color.TRANSPARENT);
         mTextView.setText(spannableString);
         mTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }
